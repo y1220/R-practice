@@ -75,7 +75,10 @@ prop.table(t1,margin=1) # row
 prop.table(t1,2)
 1/15
 
+# add value
+matrix(paste(prop.table(x=t1)*100, '%', sep=''),ncol=3)
 
-
-
-
+# quick check
+rowSums(prop.table(t1,margin=1))
+colSums(prop.table(t1,2))
+t1

@@ -1,9 +1,9 @@
 {
     "id": "E825B7D6",
-    "path": "~/Desktop/R/first project/Descriptive statistics.R",
+    "path": "~/Desktop/R/first_project/Descriptive statistics.R",
     "project_path": "Descriptive statistics.R",
     "type": "r_source",
-    "hash": "534145113",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1629320718292.0,
@@ -14,7 +14,7 @@
         "source_window_id": "",
         "Source": "Source",
         "cursorPosition": "11,0",
-        "scrollLine": "1"
+        "scrollLine": "0"
     },
     "folds": "",
     "lastKnownWriteTime": 1629322711,
