@@ -122,6 +122,27 @@ hist(airquality$Temp,
      )
 lines(density(airquality$Temp),lwd=4,col='red')
 
+cars <- c(1,3,6,4,9)
+pie(cars)
 
+pie(cars,main='Cars',col=rainbow(length(cars)),
+    labels=c('Mon','Tue','Wed','Thu','Fri'))
 
+colors <- c('white','grey70','grey90','grey50','black')
 
+car_labels <- round(cars/sum(cars)*100, 1) #deciaml place
+car_labels
+
+# concatenate %
+car_labels <- paste(car_labels,'%',sep=' ')
+car_labels
+
+pie(cars,main='Cars',col=colors,labels=car_labels,cex=0.8)
+legend('topright',c('Mon','Tue','Wed','Thu','Fri'),cex=0.8, fill=colors)
+
+# 3D exploded pie chart
+library(plotrix)
+slices <- c(10,12,4,16,8)
+lbls <- c('US','UK','Australia','Germany','France')
+pie3D(slices,labels=lbls,explode=0.1,
+      main='Pie Chart of Countries')
