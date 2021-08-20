@@ -67,7 +67,34 @@ ggplot(data=mtcars, aes(x=wt, y=mpg)) +
   facet_grid(cyl + vs~carb) +
   ggrepel::geom_text_repel(aes(label=rownames(mtcars)),size=2.5)
 
+# BAR PLOT
+barplot(mtcars$cyl) #wrong
+barplot(table(mtcars$cyl))
 
+# fill colour, col will put a color only on the border
+ggplot(data=mtcars, aes(x=cyl)) + geom_bar()
+ggplot(data=mtcars, aes(x=cyl)) + geom_bar(fill='red')
+ggplot(data=mtcars, aes(x=cyl)) + geom_bar(col='red')
+ggplot(data=mtcars, aes(x=cyl)) + geom_bar(aes(fill=factor(cyl))) + coord_flip()
+ggplot(data=mtcars, aes(x=cyl)) + geom_bar(aes(col=factor(cyl)))
 
+# count sum of each cylinders
+# . means everything we specified previously
+mtcars %>% group_by(cyl) %>% summarise(n=n()) %>%
+  ggplot(., aes(x=cyl, y=n)) +
+  geom_bar(stat='identity',aes(fill=factor(cyl))) +
+  geom_text(aes(label=n))
 
+# add facet layer, graph is equally divided
+mtcars %>% group_by(cyl,gear,am) %>% summarise(n=n()) %>%
+  ggplot(., aes(x=cyl, y=n)) +
+  geom_bar(stat='identity',aes(fill=factor(cyl))) +
+  geom_text(aes(label=n)) + facet_grid(gear~am)
+
+# utilize a space wisely
+mtcars %>% group_by(cyl,gear,am) %>% summarise(n=n()) %>%
+  ggplot(., aes(x=cyl, y=n)) +
+  geom_bar(stat='identity',aes(fill=factor(cyl))) +
+  geom_text(aes(label=n)) + 
+  facet_grid(gear~am, scales='free', space='free')
 
