@@ -98,3 +98,13 @@ mtcars %>% group_by(cyl,gear,am) %>% summarise(n=n()) %>%
   geom_text(aes(label=n)) + 
   facet_grid(gear~am, scales='free', space='free')
 
+# Heat map -> show the intensity of colours
+a= mtcars %>% group_by(cyl,gear) %>% summarise(n=n())
+a
+ggplot(a, aes(x=factor(cyl), y=factor(gear), fill=n)) + geom_tile()
+ggplot(a, aes(x=factor(cyl), y=factor(gear), fill=n)) + geom_tile() +
+  geom_text(aes(label=n),size=6) 
+ggplot(a, aes(x=factor(cyl), y=factor(gear), fill=n)) + geom_tile() +
+  geom_text(aes(label=n),size=6) + scale_fill_gradient2()
+
+
