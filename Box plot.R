@@ -55,3 +55,73 @@ barplot(as.matrix(t(autos_data)),main='Autos',ylab='Total',
         col=heat.colors(3),space=0.1,cex.axis=0.8,las=1,
         names.arg=c('Mon','Tue','Wed','Thu','Fri'),cex=0.8,beside=T) # Not the one I want...
 
+legend('topleft',c('Cars','Trucks','SUVs'),cex=1,
+       bty='n',fill=heat.colors(3))
+
+# histgrm
+?hist
+
+hist(rnorm(1000))
+hist(rnorm(1000),probability=T)
+
+hist(islands)
+hist(islands,probability=T)
+
+hist(islands,breaks=10,main='islands histogram',xlab='Area range',
+     border='red',col='grey')
+
+head(airquality$Temp)
+
+hist(airquality$Temp,
+     main='Temperature Histogram',
+     xlab='Temperature', # add label
+     ylab='Temperature Frequency',
+     las=1,
+     col=c('skyblue','chocolate2') # add colour
+)
+
+# remove all annotation
+# labels put numbers on each bar
+hist(airquality$Temp,
+     axes=F, ann=F, labels=T,ylim=c(0,35),col=c('skyblue','chocolate2'))
+
+# specify own annotation     
+hist(airquality$Temp,
+     main='Temperature Histogram',
+     xlab='Temperature',
+     ylab='Temperature Frequency',
+     las=1,
+     col=c('skyblue','chocolate2'),
+     xlim=c(50,100),
+     ylim=c(0,40),
+     density=80)
+
+# breaks
+hist(airquality$Temp,
+     main='Temperature Histogram',
+     xlab='Temperature',
+     ylab='Temperature Frequency',
+     las=1,
+     col=c('skyblue','chocolate2'),
+     labels=T,
+     breaks=20,
+     ylim=c(0,25) 
+     )
+
+# changing frequency on y axis to density/probability values
+# add a density line
+hist(airquality$Temp,
+     breaks=20,
+     freq=F, #mens that probability =T
+     main='Temperature Histogram',
+     xlab='Temperature',
+     ylab='Temperature Frequency',
+     las=1,
+     col=c('skyblue','chocolate2'),
+     labels=T
+     )
+lines(density(airquality$Temp),lwd=4,col='red')
+
+
+
+
