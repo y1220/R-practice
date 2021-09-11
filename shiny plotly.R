@@ -10,7 +10,8 @@ df <- as.data.frame(tab)
 names(df) <- c("name","times")
 df$rank <- rank(-df$times,ties.method="min")
 df <- df[order(df$rank,decreasing = F),]
-top_trendy_names <- df$name
+top_trendy_names <- sort(df$name[1:20])
+
 ui <- fluidPage(
   selectInput('name', 'Select Name', top_trendy_names),
   # selectInput('name', 'Select Name', top_trendy_names$name),
