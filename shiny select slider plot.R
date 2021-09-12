@@ -1,3 +1,6 @@
+library(shiny)
+library(ggplot2)
+library(babynames)
 ui <- fluidPage(
   # CODE BELOW: Build the UI layout keeping the
   #   inputs in the sidebar, outputs on the right, title on the top
