@@ -44,10 +44,14 @@ ui <- fluidPage(
                      end = "1950-01-01")
     ),
     mainPanel(
-      # Add plot output named 'shapes'
-      plotOutput("shapes"),
-      # Add table output named 'duration_table'
-      tableOutput("duration_table")
+      tabsetPanel(
+        tabPanel("plot",
+                 plotOutput("shapes")
+        ),
+        tabPanel("table",
+                 tableOutput("duration_table")
+        )
+      )
     )
   )
 )
