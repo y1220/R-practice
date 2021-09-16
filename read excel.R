@@ -44,4 +44,4 @@ survey_gathered <- survey_summary %>%
 
 # Create three bar charts
 ggplot(survey_gathered, aes(measure, value, fill= department)) +
-  geom_col()
+  geom_col(position= 'dodge')
