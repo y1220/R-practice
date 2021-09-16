@@ -2,6 +2,8 @@
 #library(readr)
 library(dplyr)
 library(readxl)
+library(ggplot2)
+library(tidyr)
 
 # Import the data
 #survey <- read_csv("survey_data.csv")
@@ -31,4 +33,15 @@ survey_disengaged
 survey_summary <- survey_disengaged %>%
   group_by(department) %>%
   summarise(pct_disengaged= mean(disengaged),
-            avg_salary= mean(salary),avg_vacation_days= mean(vacation_days_taken))
+            avg_salary= mean(salary),avg_vacation_taken= mean(vacation_days_taken))
+
+survey_summary
+
+# Gather data for plotting
+survey_gathered <- survey_summary %>% 
+  gather(key = "measure", value = "value",
+         pct_disengaged, avg_salary, avg_vacation_taken)
+
+# Create three bar charts
+ggplot(survey_gathered, aes(measure, value, fill= department)) +
+  geom_col()
