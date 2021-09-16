@@ -20,3 +20,9 @@ survey %>%
   group_by(department) %>%
   summarise(avg_engagement= mean(engagement)) %>%
   arrange(avg_engagement)
+
+# Create the disengaged variable and assign the result to survey
+survey_disengaged <- survey %>% 
+  mutate(disengaged = ifelse(engagement <= 2, 1, 0)) 
+
+survey_disengaged
