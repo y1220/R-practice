@@ -14,3 +14,9 @@ summary(survey)
 # Examine the counts of the department variable
 survey %>%
   count(department)
+
+# Output the average engagement score for each department, sorted
+survey %>%
+  group_by(department) %>%
+  summarise(avg_engagement= mean(engagement)) %>%
+  arrange(avg_engagement)
