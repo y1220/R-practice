@@ -44,4 +44,22 @@ survey_gathered <- survey_summary %>%
 
 # Create three bar charts
 ggplot(survey_gathered, aes(measure, value, fill= department)) +
-  geom_col(position= 'dodge')
+  geom_col(position= 'dodge') +
+  facet_wrap(~ measure, scale="free")
+
+# Add the in_sales variable
+survey_sales <- survey_disengaged %>%
+  mutate(in_sales = ifelse(department == "sales", "Sales", "Other"))
+
+# Test the hypothesis using survey_sales
+chisq.test(survey_sales$in_sales, survey_sales$disengaged)
+
+# Is the result significant?(manually check p-value <0.05)
+# 5e-1 in decimal form is 0.5 (means 5×10^-1 )
+significant <- TRUE
+
+# Test the hypothesis using the survey_sales data
+t.test(vacation_days_taken ~ in_sales, data = survey_sales)
+
+# Is the result significant?
+significant <- TRUE
