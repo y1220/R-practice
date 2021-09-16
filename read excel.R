@@ -26,3 +26,9 @@ survey_disengaged <- survey %>%
   mutate(disengaged = ifelse(engagement <= 2, 1, 0)) 
 
 survey_disengaged
+
+# Summarize the three variables by department
+survey_summary <- survey_disengaged %>%
+  group_by(department) %>%
+  summarise(pct_disengaged= mean(disengaged),
+            avg_salary= mean(salary),avg_vacation_days= mean(vacation_days_taken))
