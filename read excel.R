@@ -63,3 +63,21 @@ t.test(vacation_days_taken ~ in_sales, data = survey_sales)
 
 # Is the result significant?
 significant <- TRUE
+
+# Import the data
+#pay <- read_csv("fair_pay_data.csv")
+pay <- read_excel("survey_data.xlsx", sheet = 1, col_names = TRUE, col_types = NULL, na = "", skip = 0)
+
+# Get an overview of the data
+summary(pay)
+
+# Perform the correct statistical test
+t.test(salary ~ new_hire, data = pay)
+
+# Do the same test, and tidy up the output
+library(broom)
+t.test(salary ~ new_hire, data = pay) %>%
+  tidy()
+
+# Is the result significant? (p-value > 0.05)
+significant <- FALSE
