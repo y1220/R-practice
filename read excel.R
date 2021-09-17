@@ -81,3 +81,37 @@ t.test(salary ~ new_hire, data = pay) %>%
 
 # Is the result significant? (p-value > 0.05)
 significant <- FALSE
+
+# comparison, other values we don"t compare has to be static
+# continuous variable: age
+# discrete variable: location, department
+# fill: same length bar chart
+# Create a stacked bar chart
+ggplot(pay,aes(x=new_hire, fill=job_level)) +
+  geom_bar(position="fill")
+
+# Calculate the average salary for each group of interest
+pay_grouped <- pay %>% 
+  group_by(new_hire, job_level) %>% 
+  summarize(avg_salary = mean(salary))
+
+# Graph the results using facet_wrap()  
+pay_grouped %>%
+  ggplot(aes(x=new_hire, y=avg_salary)) +
+  geom_col() +
+  facet_wrap(facets= ~ job_level)
+
+# Load the package
+library(broom)
+
+# Filter the data to include only hourly employees
+pay_filter <- pay %>%
+  filter(job_level== 'Hourly')
+
+# Test the difference in pay
+t.test(data=pay_filter, salary ~ new_hire) %>%
+  tidy()
+
+
+# Is the result significant?
+significant <- FALSE
