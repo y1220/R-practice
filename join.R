@@ -83,3 +83,13 @@ logistic_simple %>%
 
 # Is the result significant?
 significant <- TRUE
+
+# Run a multiple logistic regression
+logistic_multiple <- glm(high_performer ~ gender + job_level, family = "binomial", data = performance)
+
+# View the result with summary() or tidy()
+logistic_multiple %>%
+  tidy()
+
+# Is the result significant?  
+significant <- TRUE
