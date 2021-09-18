@@ -55,3 +55,31 @@ performance %>%
 performance %>% 
   ggplot(aes(x = gender, fill = factor(rating))) +
   geom_bar(position = "fill") 
+
+# Visualize the distribution of job_level by gender
+performance %>%
+  ggplot(aes(x = gender, fill = job_level)) +
+  geom_bar(position = "fill")
+
+# Test whether men and women have different job level distributions
+chisq.test(performance$gender, performance$job_level) 
+
+# Visualize the distribution of high_performer by gender, faceted by job level
+performance %>% 
+  ggplot(aes(x = gender, fill = factor(high_performer))) +
+  geom_bar(position = "fill") + 
+  facet_wrap(facets = ~ job_level)
+
+# Run a simple logistic regression
+logistic_simple <- glm(high_performer ~ gender, family = "binomial", data = performance) 
+
+# View the result with summary()
+logistic_simple %>%
+  summary()
+
+# View a tidy version of the result
+logistic_simple %>%
+  tidy()
+
+# Is the result significant?
+significant <- TRUE
