@@ -19,3 +19,18 @@ avg_attrition <- data.frame(
 # Plot the bar chart
 ggplot(avg_attrition,aes(x=recruiting_source, y=attrition_rate)) +
   geom_col()
+
+# Run the simple regression
+model_simple <- lm(salary ~ new_hire, data = pay)
+
+# Display the summary of model_simple (dplyr is needed for %>%)
+model_simple %>% 
+  summary()
+
+# Display a tidy summary
+library(broom)
+model_simple %>% 
+  tidy()
+
+# Is new hire pay significantly higher in this model?
+significant <- TRUE
