@@ -45,3 +45,13 @@ chisq.test(performance$gender, performance$high_performer) %>%
 
 # Is the test result significant?
 significant <- TRUE
+
+# Visualize the distribution of high_performer by gender
+performance %>% 
+  ggplot(aes(x = gender, fill = factor(high_performer))) +
+  geom_bar(position = "fill")
+
+# Visualize the distribution of all ratings by gender
+performance %>% 
+  ggplot(aes(x = gender, fill = factor(rating))) +
+  geom_bar(position = "fill") 
