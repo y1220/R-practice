@@ -30,3 +30,18 @@ summary(joined_data)
 joined_data %>%
   group_by(gender) %>%
   summarize(avg_rating = mean(rating))
+
+# Add the high_performer column
+performance <- joined_data %>%  
+  mutate(high_performer = ifelse(rating >= 4, 1, 0))
+
+# Test whether one gender is more likely to be a high performer
+chisq.test(performance$gender, performance$high_performer)   
+
+# Do the same test, and tidy the output
+library(broom)
+chisq.test(performance$gender, performance$high_performer) %>% 
+  tidy()
+
+# Is the test result significant?
+significant <- TRUE
