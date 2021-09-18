@@ -12,10 +12,21 @@ excel_sheets("performance_data.xlsx")
 performance_data <- read_excel("performance_data.xlsx", sheet = 1, col_names = TRUE, col_types = NULL, na = "", skip = 0)
 
 excel_sheets("hr_data.xlsx")
-performance_data <- read_excel("hr_data.xlsx", sheet = 1, col_names = TRUE, col_types = NULL, na = "", skip = 0)
+hr_data <- read_excel("hr_data.xlsx", sheet = 1, col_names = TRUE, col_types = NULL, na = "", skip = 0)
 
 # Examine the datasets
 hr_data %>% summary()
 performance_data %>% summary()
 
-# count(hr_data, department)
+count(hr_data, department)
+
+# Join the two tables
+joined_data <- left_join(hr_data, performance_data, by = "employee_id")
+
+# Examine the result
+summary(joined_data)
+
+# Check whether the average performance rating differs by gender 
+joined_data %>%
+  group_by(gender) %>%
+  summarize(avg_rating = mean(rating))
