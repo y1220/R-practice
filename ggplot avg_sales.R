@@ -34,3 +34,17 @@ model_simple %>%
 
 # Is new hire pay significantly higher in this model?
 significant <- TRUE
+
+# Run the multiple regression
+model_multiple <- lm(salary ~ new_hire + job_level, data = pay)
+
+# Display the summary of model_multiple
+model_multiple %>% 
+  summary()
+
+# Display a tidy summary
+model_multiple %>% 
+  tidy()
+
+# Is new hire pay significantly higher in this model?
+significant <- FALSE
