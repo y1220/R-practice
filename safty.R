@@ -31,3 +31,20 @@ hr_joined %>%
   group_by(location) %>%
   summarize(accident_rate = mean(had_accident)) %>%
   arrange(desc(accident_rate))
+
+# Compare annual accident rates by location
+accident_rates <- hr_joined %>% 
+  group_by(location, year) %>% 
+  summarize(accident_rate = mean(had_accident))
+
+accident_rates
+
+# Graph it
+accident_rates %>% 
+  ggplot(aes(factor(year), accident_rate)) +
+  geom_col() +
+  facet_wrap(~location)
+
+# Answer the question
+increased_most <- "West River"
+
