@@ -48,3 +48,18 @@ accident_rates %>%
 # Answer the question
 increased_most <- "West River"
 
+# Filter out the other locations
+westriver <- hr_joined %>% 
+  filter(location == "West River")
+
+# Find the average overtime hours worked by year
+westriver %>%
+  group_by(year) %>% 
+  summarize(average_overtime_hours = mean(overtime_hours))
+
+# Test difference in Southfield's overtime hours between years
+t.test(overtime_hours ~ year, data = westriver) 
+
+# Do the years have significantly different average overtime hours?  
+significant <- TRUE
+
