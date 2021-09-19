@@ -95,3 +95,14 @@ chisq.test(other_locs$year, other_locs$disengaged)
 # Are the results significant?
 significant_overtime <- FALSE
 significant_disengaged <- FALSE
+
+# Use multiple regression to test the impact of year and disengaged on accident rate in Southfield
+regression <- glm(had_accident ~ year + disengaged, family = "binomial", data = safety)
+
+# Examine the output
+library(broom)
+tidy(regression)
+
+# Interpret the regression output
+significant_year <- FALSE
+significant_disengaged <- TRUE
