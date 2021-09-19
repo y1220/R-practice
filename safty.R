@@ -70,3 +70,28 @@ survey_data <- read_excel("survey_data_2.xlsx", sheet = 1, col_names = TRUE, col
 # Create the safety dataset
 safety <- left_join(hr_joined, survey_data, by = c("year", "employee_id")) %>%
   mutate(disengaged = ifelse(engagement<3,1,0),year = factor(year))
+
+# Visualize the difference in % disengaged by year in Southfield
+safety %>% 
+  ggplot(aes(x = year, fill = factor(disengaged))) +
+  geom_bar(position = "fill")
+
+# Test whether one year had significantly more disengaged employees
+chisq.test(safety$year, safety$disengaged)
+
+# Is the result significant?
+significant <- TRUE
+
+# Filter out West River
+other_locs <- safety %>% 
+  filter(location != "West River")
+
+# Test whether one year had significantly more overtime hours worked
+t.test(overtime_hours ~ year, data = other_locs) 
+
+# Test whether one year had significantly more disengaged employees
+chisq.test(other_locs$year, other_locs$disengaged)
+
+# Are the results significant?
+significant_overtime <- FALSE
+significant_disengaged <- FALSE
