@@ -17,3 +17,17 @@ hr_joined <- left_join(hr_data, accident_data, by = c("year", "employee_id")) %>
   mutate(had_accident = ifelse(is.na(accident_type),0,1)) 
 
 hr_joined
+
+# Find accident rate for each year
+hr_joined %>% 
+  group_by(year) %>% 
+  summarize(accident_rate = mean(had_accident))
+
+# Test difference in accident rate between years
+chisq.test(hr_joined$year, hr_joined$had_accident)
+
+# Which location had the highest acccident rate?
+hr_joined %>%
+  group_by(location) %>%
+  summarize(accident_rate = mean(had_accident)) %>%
+  arrange(desc(accident_rate))
