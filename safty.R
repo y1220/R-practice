@@ -63,3 +63,10 @@ t.test(overtime_hours ~ year, data = westriver)
 # Do the years have significantly different average overtime hours?  
 significant <- TRUE
 
+# import the survey data
+excel_sheets("survey_data_2.xlsx")
+survey_data <- read_excel("survey_data_2.xlsx", sheet = 1, col_names = TRUE, col_types = NULL, na = "", skip = 0)
+
+# Create the safety dataset
+safety <- left_join(hr_joined, survey_data, by = c("year", "employee_id")) %>%
+  mutate(disengaged = ifelse(engagement<3,1,0),year = factor(year))
