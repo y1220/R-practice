@@ -15,3 +15,12 @@ sum_abs <- function(arg1, arg2) {
 
 # Use the function
 sum_abs(-2, 3)
+
+# Define the function hello()
+hello <- function() {
+  print("Hi there!")
+  return(TRUE)
+}
+
+# Call the function hello()
+hello()
