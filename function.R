@@ -90,3 +90,12 @@ interpret_all <- function(views, return_sum = TRUE) {
 # Call the interpret_all() function on both linkedin and facebook
 interpret_all(linkedin)
 interpret_all(facebook)
+
+# see the list of packages
+search()
+
+# Load the ggplot2 package
+library(ggplot2)
+
+# Retry the qplot() function
+qplot(mtcars$wt, mtcars$hp)
