@@ -1,0 +1,14 @@
+name: first_project
+title: first_project
+username:
+account: y1220
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4839648
+bundleId: 5124549
+url: https://y1220.shinyapps.io/first_project/
+when: 1633896183.0245
+lastSyncTime: 1633896183.02452
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|accident_data.xlsx|Aggregate.R|Aggregation_data.xlsx|Apply family.R|Bar Chart.R|basic graph.R|Box plot.R|Cluster Analysis.R|create_var.R|Data structure.R|date time.R|decision tree.R|Descriptive statistics.R|dplyr.R|function.R|gapminder.R|ggplot avg_sales.R|ggplot.R|hr_data_2.xlsx|hr_data.xlsx|join.R|lapply.R|linear regression.R|logistic regression model.R|multi-linear regression.R|operators.R|performance_data.xlsx|rbokeh.R|read excel.R|recruitment.R|regex.R|safty.R|seasonal plot.R|shape variation.R|shiny bootstrap server.R|shiny bootstrap ui.R|shiny cuisine.R|shiny data range input.R|shiny eventReactive.R|shiny filter summarize group_by.R|shiny hello bonjour.R|shiny isolate .R|shiny mental health sol.R|shiny mental health.R|shiny name.R|shiny observe.R|shiny observeEvent help.R|shiny plot.R|shiny plotly reactive sol.R|shiny plotly.R|shiny reactive bmi.R|shiny select.R|shiny sidebar layouts.R|shiny simpler table.R|shiny slider.R|shiny tab plot table.R|shiny table search.R|shiny tabset panel.R|shiny tmp_df from fun.R|shiny validate.R|shiny.R|simple network.R|Subsetting.R|survey_data_2.xlsx|survey_data.csv|survey_data.xlsx|test.csv|test.txt|test1.xlsx|vector.R|y

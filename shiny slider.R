@@ -2,6 +2,7 @@ library(shiny)
 library(ggplot2)
 library(babynames)
 library(tidyverse)
+library(rsconnect)
 ui <- fluidPage(
   titlePanel("What's in a Name?"),
   # Add select input named "sex" to choose between "M" and "F"

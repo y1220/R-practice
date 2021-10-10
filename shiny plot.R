@@ -1,5 +1,6 @@
 library(shiny)
 library(ggplot2)
+library(rsconnect)
 
 ui <- fluidPage(
   titlePanel("Baby Name Explorer"),

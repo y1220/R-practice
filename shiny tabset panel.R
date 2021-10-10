@@ -2,7 +2,7 @@ library(shiny)
 library(ggplot2)
 library(babynames)
 library(tidyverse)
-
+library(rsconnect)
 # generate top 20 popuplar names
 tab <- table(a<-babynames$name)
 df <- as.data.frame(tab)

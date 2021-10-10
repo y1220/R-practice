@@ -2,6 +2,7 @@ library(shiny)
 library(ggplot2)
 library(babynames)
 library(tidyverse)
+library(rsconnect)
 ui <- fluidPage(
   # MODIFY CODE BELOW: Wrap in a sidebarLayout
   sidebarLayout(
